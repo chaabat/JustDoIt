@@ -1,1 +1,37 @@
-<p>navbar works!</p>
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <span class="text-white text-xl font-bold">JustDoIt</span>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a
+              routerLink="/"
+              routerLinkActive="bg-gray-900 text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Tâches
+            </a>
+            <a
+              routerLink="/categories"
+              routerLinkActive="bg-gray-900 text-white"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Catégories
+            </a>
+            <a
+              routerLink="/statistics"
+              routerLinkActive="bg-gray-900 text-white"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Statistiques
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
