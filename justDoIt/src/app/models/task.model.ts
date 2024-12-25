@@ -1,13 +1,13 @@
 export enum Priority {
-  LOW = 'low',
-  MEDIUM = 'medium',
-  HIGH = 'high',
+  HIGH = 'HIGH',
+  MEDIUM = 'MEDIUM',
+  LOW = 'LOW',
 }
 
 export enum Status {
-  NOT_STARTED = 'not_started',
-  IN_PROGRESS = 'in_progress',
-  COMPLETED = 'completed',
+  COMPLETED = 'COMPLETED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  NOT_STARTED = 'NOT_STARTED',
 }
 
 export interface Task {

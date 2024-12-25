@@ -1,1 +1,57 @@
-<p>task-list works!</p>
+<div class="container mx-auto p-4">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Mes tâches</h2>
+    <button
+      (click)="showAddForm = true"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+    >
+      Nouvelle tâche
+    </button>
+  </div>
+
+  <app-task-search (search)="onSearch($event)" class="mb-6"></app-task-search>
+
+  <app-task-form
+    *ngIf="showAddForm"
+    [editMode]="!!editingTask"
+    [task]="editingTask"
+    (formSubmit)="handleFormSubmit($event)"
+    (formCancel)="showAddForm = false"
+  ></app-task-form>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div
+      *ngFor="let task of tasks$ | async"
+      class="bg-white rounded-lg shadow p-4"
+      [ngClass]="{
+        'border-l-4 border-red-500': task.priority === Priority.HIGH,
+        'border-l-4 border-yellow-500': task.priority === Priority.MEDIUM,
+        'border-l-4 border-green-500': task.priority === Priority.LOW
+      }"
+    >
+      <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold">{{ task.title }}</h3>
+        <div class="space-x-2">
+          <button
+            (click)="editTask(task)"
+            class="text-blue-500 hover:text-blue-600"
+          >
+            Modifier
+          </button>
+          <button
+            (click)="deleteTask(task.id)"
+            class="text-red-500 hover:text-red-600"
+          >
+            Supprimer
+          </button>
+        </div>
+      </div>
+
+      <p class="text-gray-600 mb-2">{{ task.description }}</p>
+      <div class="text-sm text-gray-500">
+        <p>Échéance: {{ task.dueDate | date : "dd/MM/yyyy HH:mm" }}</p>
+        <p>Statut: {{ task.status }}</p>
+      </div>
+    </div>
+  </div>
+</div>
